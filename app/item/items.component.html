@@ -1,0 +1,25 @@
+
+<ActionBar title="My App" class="action-bar">
+</ActionBar>
+
+<GridLayout class="page" columns="*" rows="*" scrollEnabled="false">
+    
+    <RadListView class="list-group" [items]="items" [itemTemplateSelector]="templateSelector" (scrolled)="onScroll($event)" col="0" row="0">
+      <ListViewLinearLayout  scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default">
+
+        <ng-template tkListItemTemplate tkTemplateKey="header" let-item="item">
+            <GridLayout class="list-group-item header" backgroundColor="Gray" height="22" columns="*" rows="*">
+                <Label class="list-group-item-heading" isUserInteractionEnabled="false" col="0" row="0"></Label>
+            </GridLayout>
+        </ng-template>
+
+        <ng-template tkListItemTemplate tkTemplateKey="item" let-item="item">
+            <GridLayout class="list-group-item"  columns="*" rows="*">
+              <Label class="list-group-item-heading" [nsRouterLink]="['/item', item.id]" [text]="item.name" col="0" row="0"></Label>
+            </GridLayout>
+        </ng-template>
+
+      </ListViewLinearLayout>
+    </RadListView>
+
+  </GridLayout>
